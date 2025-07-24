@@ -1,7 +1,9 @@
 asgiref==3.9.1
 Django==5.2.4
 greenlet==3.2.3
+gunicorn==23.0.0
 libsql-experimental==0.0.55
+packaging==25.0
 python-dotenv==1.1.1
 SQLAlchemy==2.0.41
 sqlalchemy-libsql==0.2.0
