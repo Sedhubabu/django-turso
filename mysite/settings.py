@@ -50,21 +50,22 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'app/templates'],
+        'DIRS': [BASE_DIR / 'app' / 'templates'],  # or your template dir
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'django.template.context_processors.csrf',  # ✅ Add this line
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
