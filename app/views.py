@@ -18,18 +18,20 @@ from .models_sqla import SessionLocal, Item, User
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models_sqla import SessionLocal, User
+from app.models import User
+from app.db import SessionLocal
 
 def add_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
+
         session = SessionLocal()
         user = User(username=username, email=email)
         session.add(user)
         session.commit()
         return JsonResponse({'status': 'User created'})
     
-    # Render form on GET
     return render(request, 'add_user.html')
 
 
