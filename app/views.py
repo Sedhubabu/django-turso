@@ -14,6 +14,10 @@ def items(request):
 
 from django.http import JsonResponse
 from .models_sqla import SessionLocal, Item, User
+# app/views.py
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models_sqla import SessionLocal, User
 
 def add_user(request):
     if request.method == 'POST':
@@ -24,6 +28,10 @@ def add_user(request):
         session.add(user)
         session.commit()
         return JsonResponse({'status': 'User created'})
+    
+    # Render form on GET
+    return render(request, 'add_user.html')
+
 
 def list_users(request):
     session = SessionLocal()
