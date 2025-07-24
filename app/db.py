@@ -2,8 +2,12 @@
 
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+import os
+engine = create_engine(
+    os.getenv("TURSO_DATABASE_URL"),
+    connect_args={"authToken": os.getenv("TURSO_AUTH_TOKEN")},
+    echo=True
+)
 
-# Example SQLite connection (change for production)
-engine = create_engine('sqlite:///django-database.db', connect_args={"check_same_thread": False})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
