@@ -87,7 +87,7 @@ load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'embedded.db',
+        'NAME': 'django-database.db',
         'OPTIONS': {
             'uri': True,
         }
