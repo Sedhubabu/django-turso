@@ -14,5 +14,5 @@ urlpatterns = [
     path('items/', items),
     path('',home),
     path('users/add/', add_user),
-    path('users/', list_users),
+    path('users/list/', list_users, name='list_users'),
 ]

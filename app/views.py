@@ -34,7 +34,11 @@ def add_user(request):
     return render(request, 'add_user.html')
 
 
+from django.shortcuts import render
+from app.db import SessionLocal
+from app.models import User
+
 def list_users(request):
     session = SessionLocal()
     users = session.query(User).all()
-    return JsonResponse({'users': [{'id': u.id, 'username': u.username, 'email': u.email} for u in users]})
+    return render(request, 'list_users.html', {'users': users})
