@@ -11,6 +11,7 @@ Django==5.2.4
 docutils==0.21.2
 frozenlist==1.7.0
 greenlet==3.2.3
+gunicorn==23.0.0
 idna==3.10
 imagesize==1.4.1
 Jinja2==3.1.6
