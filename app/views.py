@@ -17,7 +17,7 @@ from .models_sqla import SessionLocal, Item, User
 # app/views.py
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models_sqla import SessionLocal, User
+from .models_sqla import User
 from app.db import SessionLocal
 
 def add_user(request):

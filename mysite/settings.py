@@ -79,20 +79,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'django-database.db',
-        'OPTIONS': {
-            'uri': True,
-        }
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
 
 # Replace this if you want to manually pass URL, auth token in your code
 

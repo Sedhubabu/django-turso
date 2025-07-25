@@ -6,18 +6,26 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-url = os.getenv("TURSO_DATABASE_URL")  # e.g., libsql://mydb-sedhu.turso.io
-token = os.getenv("TURSO_AUTH_TOKEN")
+# Get credentials from env
+url = os.getenv("DATABASE_URL")
+token = os.getenv("AUTH_TOKEN")
 
-# Strip scheme and use correct libsql connection format
-hostname = url.split("://")[1]
+# Check both are present
+if not url or not token:
+    raise ValueError("Missing TURSO_DATABASE_URL or TURSO_AUTH_TOKEN in .env")
 
+# Strip 'libsql://' prefix for SQLAlchemy URL
+if url.startswith("libsql://"):
+    host = url[len("libsql://"):]
+else:
+    raise ValueError("TURSO_DATABASE_URL must start with libsql://")
+
+# Create engine
 engine = create_engine(
-    f"sqlite+libsql:///{hostname}",
-    connect_args={"auth_token": token},  # ✅ FIXED
-    echo=True
+    f"sqlite+libsql:///{host}",
+    connect_args={"auth_token": token},
+    echo=True,
 )
-
 
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
@@ -27,7 +35,6 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     description = Column(String(255))
-
 
 class User(Base):
     __tablename__ = "users"
