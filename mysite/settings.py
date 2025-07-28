@@ -24,11 +24,12 @@ SECRET_KEY = 'django-insecure-p@awr5=hi*4!(dtv#uoo=5#()2_1-_%pon3q91=-9%wl2_8h+r
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['.up.railway.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.up.railway.app', '127.0.0.1', 'localhost','sedhubabu.com']
 
 
 CSRF_TRUSTED_ORIGINS = [
     'https://django-turso-production.up.railway.app',
+    'sedhubabu.com',
 ]
 
 
